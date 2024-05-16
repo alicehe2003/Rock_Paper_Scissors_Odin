@@ -43,9 +43,17 @@ function playRound(humanChoice, computerChoice) {
             ++humanScore; 
         }
     }
+
+    updateScore(); 
 } 
 
-/*
+// Updates the score shown on UI 
+function updateScore() {
+    human.textContent = "Youre score: " + humanScore; 
+    computer.textContent = "Computer score: " + computerScore; 
+}
+
+/* 
 function playGame() {
     for (let i = 0; i < 5; i++) {
         const humanSelection = getHumanChoice(); 
@@ -74,7 +82,20 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper"); 
 const scissorsButton = document.querySelector("#scissors"); 
 
-rockButton.addEventListener("click", playRound("rock", getComputerChoice())); 
-paperButton.addEventListener("click", playRound("paper", getComputerChoice())); 
-scissorsButton.addEventListener("click", playRound("paper", getComputerChoice())); 
+rockButton.addEventListener("click", () => playRound("rock", getComputerChoice())); 
+paperButton.addEventListener("click", () => playRound("paper", getComputerChoice())); 
+scissorsButton.addEventListener("click", () => playRound("paper", getComputerChoice())); 
+
+const resultDisplay = document.querySelector(".results"); 
+
+const human = document.createElement("div"); 
+human.classList.add("content"); 
+resultDisplay.appendChild(human); 
+
+const computer = document.createElement("div"); 
+computer.classList.add("content"); 
+resultDisplay.appendChild(computer); 
+
+updateScore(); 
+
 
