@@ -45,6 +45,7 @@ function playRound(humanChoice, computerChoice) {
     }
 } 
 
+/*
 function playGame() {
     for (let i = 0; i < 5; i++) {
         const humanSelection = getHumanChoice(); 
@@ -65,3 +66,15 @@ function playGame() {
 }
 
 playGame(); 
+*/ 
+
+// using buttons to select choice 
+
+const rockButton = document.querySelector("#rock"); 
+const paperButton = document.querySelector("#paper"); 
+const scissorsButton = document.querySelector("#scissors"); 
+
+rockButton.addEventListener("click", playRound("rock", getComputerChoice())); 
+paperButton.addEventListener("click", playRound("paper", getComputerChoice())); 
+scissorsButton.addEventListener("click", playRound("paper", getComputerChoice())); 
+
