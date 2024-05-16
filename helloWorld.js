@@ -44,13 +44,44 @@ function playRound(humanChoice, computerChoice) {
         }
     }
 
+    gameStatus(humanChoice, computerChoice); 
     updateScore(); 
 } 
 
+// Logs current game status 
+function gameStatus(humanChoice, computerChoice) {
+    gameLog.textContent = "You chose " + humanChoice + ", the computer chose " + computerChoice; 
+}
+
+const stat = document.querySelector(".status"); 
+const gameLog = document.createElement("content");
+stat.appendChild(gameLog); 
+
 // Updates the score shown on UI 
 function updateScore() {
-    human.textContent = "Youre score: " + humanScore; 
+    human.textContent = "Your score: " + humanScore; 
     computer.textContent = "Computer score: " + computerScore; 
+
+    // if player reaches 5 points, announce winner 
+    if (humanScore == 5 || computerScore == 5) {
+        announceWinner(); 
+    }
+}
+
+const winner = document.querySelector(".winner"); 
+const message = document.createElement("content"); 
+winner.appendChild(message); 
+
+// announce winner and reset score 
+function announceWinner() {
+    if (humanScore == 5) {
+        message.textContent = "You win!"
+    } else if (computerScore == 5) {
+        message.textContent = "You lose!"
+    } 
+
+    humanScore = 0; 
+    computerScore = 0; 
 }
 
 /* 
